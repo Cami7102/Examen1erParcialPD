@@ -12,7 +12,6 @@ public class Client {
         tem.setPuertosUSB(4);
         tem.setControlRemoto(true);
         tem.setBluetooth(true);
-        tem.setSerialTelevisor("10 dígitos");
 
         SerialTelevisor uno = new SerialTelevisor();
         uno.setSerial("10 digitos");
