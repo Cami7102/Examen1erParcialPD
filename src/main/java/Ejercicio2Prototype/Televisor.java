@@ -2,14 +2,14 @@ package Ejercicio2Prototype;
 
 public class Televisor {
     private String sistemaOperativo;
-    private int versiónSistemaOperativo;
+    private String versiónSistemaOperativo;
     private int pulgadas;
     private int resolucion;
     private Boolean puertoHDMI;
     private int puertosUSB;
     private Boolean controlRemoto;
     private Boolean bluetooth;
-    private int serialTelevisor;
+    private SerialTelevisor serialTelevisor = new SerialTelevisor();
 
     public Televisor(){
     }
@@ -22,11 +22,11 @@ public class Televisor {
         this.sistemaOperativo = sistemaOperativo;
     }
 
-    public int getVersiónSistemaOperativo() {
+    public String getVersiónSistemaOperativo() {
         return versiónSistemaOperativo;
     }
 
-    public void setVersiónSistemaOperativo(int versiónSistemaOperativo) {
+    public void setVersiónSistemaOperativo(String versiónSistemaOperativo) {
         this.versiónSistemaOperativo = versiónSistemaOperativo;
     }
 
@@ -78,16 +78,20 @@ public class Televisor {
         this.bluetooth = bluetooth;
     }
 
-    public int getSerialTelevisor() {
+    public SerialTelevisor getSerialTelevisor() {
         return serialTelevisor;
     }
 
-    public void setSerialTelevisor(int serialTelevisor) {
+    public void setSerialTelevisor(SerialTelevisor serialTelevisor) {
         this.serialTelevisor = serialTelevisor;
     }
 
     @Override
     public Object clone(){
+
+        SerialTelevisor cloneS = new SerialTelevisor();
+        cloneS.setSerial(this.getSerialTelevisor().getSerial());
+
         Televisor clone = new Televisor();
         clone.setSistemaOperativo(this.getSistemaOperativo());
         clone.setVersiónSistemaOperativo(this.getVersiónSistemaOperativo());
@@ -97,7 +101,20 @@ public class Televisor {
         clone.setPuertosUSB(this.getPuertosUSB());
         clone.setControlRemoto(this.getControlRemoto());
         clone.setBluetooth(this.getBluetooth());
-        clone.setSerialTelevisor(this.getSerialTelevisor());
+        clone.setSerialTelevisor(cloneS);
         return clone;
+    }
+
+    public void showInfo(){
+        System.out.println(" \n ****Caracteristica Televisor Smart**** \n");
+        System.out.println("Sistema operativo: " +sistemaOperativo);
+        System.out.println("Version del sistema operativo: " +versiónSistemaOperativo);
+        System.out.println("Pulgadas: " +pulgadas);
+        System.out.println("Resolucion: " +resolucion);
+        System.out.println("Puertos HDMI: " +puertoHDMI);
+        System.out.println("Puertos USB: " +puertosUSB);
+        System.out.println("Control remoto: " +controlRemoto);
+        System.out.println("Bluetooth: " +bluetooth);
+        System.out.println("Serial de television: " +serialTelevisor.getSerial());
     }
 }
